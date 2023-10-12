@@ -13,8 +13,23 @@ namespace CardGameBT
             cardList = cardList.Replace(" ", "");
             string[] cards = cardList.Split(',');
 
-            if (cards.Length > 2 * cards.Distinct().Count() || cards.Count(c => c == "JK") > 2) 
-                throw new InvalidOperationException("You can't enter duplicate cards");
+            int jkCount = 0;
+
+            foreach (string card in cards)
+            {
+                if (card == "JK")
+                {
+                    jkCount++;
+
+                    if (jkCount > 2)
+                        throw new InvalidOperationException("You can't have more than two jokers");
+                }
+                else
+                {
+                    if (cards.Length > 1 * cards.Distinct().Count())
+                        throw new InvalidOperationException("You can't enter duplicate cards");
+                }
+            }
 
             int totalScore = 0;
 

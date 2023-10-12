@@ -29,6 +29,12 @@ namespace CardGameBT
             CardScores scorer = new CardScores();
             Assert.Throws<InvalidOperationException>(() => scorer.CalculateScore("5X,3D,6H,AS,KS"));
         }
+        [Test]
+        public void TestJokerDuplicates()
+        {
+            CardScores scorer = new CardScores();
+            Assert.Throws<InvalidOperationException>(() => scorer.CalculateScore("AH,KS,JK,4D,JK"));
+        }
     }
 }
 
