@@ -13,7 +13,7 @@ namespace CardGameBT
             cardList = cardList.Replace(" ", "");
             string[] cards = cardList.Split(',');
 
-            if (cards.Length != cards.Distinct().Count() || cards.Count(c => c == "JK") > 2)
+            if (cards.Length > 2 * cards.Distinct().Count() || cards.Count(c => c == "JK") > 2) 
                 throw new InvalidOperationException("You can't enter duplicate cards");
 
             int totalScore = 0;
