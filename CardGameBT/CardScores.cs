@@ -10,10 +10,13 @@ namespace CardGameBT
     {
         public int CalculateScore(string cardList)
         {
+            // splits inputted values using a comma, and also replaces any empty space
             cardList = cardList.Replace(" ", "");
             string[] cards = cardList.Split(',');
 
             int jkCount = 0;
+
+            // keep track of joker cards and only allow up to two
 
             foreach (string card in cards)
             {
@@ -32,6 +35,8 @@ namespace CardGameBT
             }
 
             int totalScore = 0;
+
+            // seperate for loops for each card index 
 
             foreach (string card in cards)
             {
@@ -91,6 +96,8 @@ namespace CardGameBT
 
                 totalScore += value * multiplier;
             }
+
+            // double value of the hand if there are any jokers present 
 
             if (cards.Contains("JK"))
             {
